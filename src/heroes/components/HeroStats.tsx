@@ -7,9 +7,16 @@ import { FavoriteHeroContext } from "../context/favorites-hero.context";
 import { use } from "react";
 
 export function HeroStats() {
-  const { data: heroSummary } = useHeroSummary();
+  const { data: heroSummary, isLoading } = useHeroSummary();
   const { favoriteCount } = use(FavoriteHeroContext);
   const total = heroSummary?.totalHeroes ? heroSummary?.totalHeroes : 0;
+
+
+  if (isLoading) {
+    return (
+      <div>Loading ...</div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -37,8 +44,8 @@ export function HeroStats() {
         title="Favorites"
         icon={<Heart className="h-4 w-4 text-muted-foreground" />}
       >
-        <div className="text-2xl font-bold text-red-600">{favoriteCount}</div>
-        <p className="text-xs text-muted-foreground">{((favoriteCount / total) * 100).toFixed(2)}% of total</p>
+        <div className="text-2xl font-bold text-red-600" data-testId='favorite-count'>{favoriteCount}</div>
+        <p className="text-xs text-muted-foreground" data-testId='favorite-percentage' >{((favoriteCount / total) * 100).toFixed(2)}% of total</p>
       </HeroStatCard>
 
       <HeroStatCard
