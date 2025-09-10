@@ -54,7 +54,8 @@ export function HomePage() {
                   prev.set('category', 'all');
                   return prev;
                 })}
-              value="all">All Characters ({heroSummary?.totalHeroes})</TabsTrigger>
+              value="all">All Characters ({heroSummary?.totalHeroes})
+            </TabsTrigger>
             <TabsTrigger
               onClick={() => setSearchParams(
                 (prev) => {

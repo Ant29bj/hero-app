@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useHeroSummary } from "../hooks/useHeroSumary";
 import type { SumaryInfromationResponse } from "../types/sumary-infromation.response";
 import { FavoriteHeroProvider } from "../context/favorites-hero.context";
-import { L } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
 
 const mockHero = {
   "id": "1",
@@ -133,7 +132,6 @@ describe('HeroStats', () => {
 
   test('should render component with mock data', () => {
     const { container } = renderHeroStats(mockSummaryData);
-    screen.debug();
     expect(container).toMatchSnapshot();
   });
 
