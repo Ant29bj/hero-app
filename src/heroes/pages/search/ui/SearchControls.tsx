@@ -6,7 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { Filter, Search } from "lucide-react";
+import { Filter, Search, Trash } from "lucide-react";
 import { useRef, type KeyboardEvent } from "react";
 import { useSearchParams } from "react-router";
 import { CustomSelectMenu } from "@/components/custom/CustomSelectMenu";
@@ -28,6 +28,20 @@ export function SearchControls() {
   const setQueryParams = (key: string, value: string) => {
     setSearchParams((prev) => {
       prev.set(key, value);
+      return prev;
+    });
+  }
+
+  const clearAllFilters = () => {
+    setSearchParams(new URLSearchParams());
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  }
+
+  const clearQueryParam = (key: string) => {
+    setSearchParams((prev) => {
+      prev.delete(key);
       return prev;
     });
   }
@@ -70,15 +84,14 @@ export function SearchControls() {
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">Advanced Filters</h3>
                 <Button
-                  onClick={() => {
-
-                  }}
+                  onClick={clearAllFilters}
                   variant="ghost">Clear All</Button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Team</label>
                   <CustomSelectMenu
+                    buttonAction={() => clearQueryParam('team')}
                     placeholder="Batfamilia, X-Men ..."
                     keyValue="team"
                     values={[
@@ -92,6 +105,7 @@ export function SearchControls() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Category</label>
                   <CustomSelectMenu
+                    buttonAction={() => clearQueryParam('category')}
                     placeholder="Hero, Villain, ..."
                     keyValue="category"
                     values={[
@@ -103,6 +117,7 @@ export function SearchControls() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Universe</label>
                   <CustomSelectMenu
+                    buttonAction={() => clearQueryParam('universe')}
                     placeholder="Marvel, DC, ..."
                     keyValue="universe"
                     values={[
@@ -114,6 +129,7 @@ export function SearchControls() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Status</label>
                   <CustomSelectMenu
+                    buttonAction={() => clearQueryParam('status')}
                     placeholder="Marvel, DC, ..."
                     keyValue="status"
                     values={[
