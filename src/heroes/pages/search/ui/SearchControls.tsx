@@ -41,7 +41,7 @@ export function SearchControls() {
           <Input
             ref={inputRef}
             onKeyDown={handleKeyDown}
-            defaultValue={searchParams.get('input') ?? ''}
+            defaultValue={searchParams.get('name') ?? ''}
             placeholder="Search heroes, villains, powers, teams..."
             className="pl-12 h-12 text-lg" />
         </div>
@@ -133,7 +133,6 @@ export function SearchControls() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
     </>
   );
 }
