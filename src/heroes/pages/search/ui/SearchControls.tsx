@@ -63,7 +63,7 @@ export function SearchControls() {
           </Button>
         </div>
       </div>
-      <Accordion type="single" collapsible value={isActiveAccordion}>
+      <Accordion type="single" collapsible value={isActiveAccordion} data-testid='accordion'>
         <AccordionItem value="advance-filters">
           <AccordionContent>
             <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">
