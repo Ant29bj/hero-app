@@ -6,7 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { Filter, Search, Trash } from "lucide-react";
+import { Filter, Search } from "lucide-react";
 import { useRef, type KeyboardEvent } from "react";
 import { useSearchParams } from "react-router";
 import { CustomSelectMenu } from "@/components/custom/CustomSelectMenu";
